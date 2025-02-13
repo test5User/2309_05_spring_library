@@ -1,24 +1,28 @@
 package by.itclass.model.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Library {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @NonNull private int id;
     @Column(length = 50)
-    private String name;
+    @NonNull private String name;
     @Column(length = 50)
-    private String address;
+    @NonNull private String address;
     @OneToMany(mappedBy = "library", fetch = FetchType.EAGER)
     private List<Book> books;
+
+    public Library(String name,String address) {
+        this.name = name;
+        this.address = address;
+    }
 }

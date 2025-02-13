@@ -19,9 +19,19 @@
                 <td>${library.address}</td>
                 <td>
                     <a href="/view/${library.id}">View</a>
+                    <a href="/delete?id=${library.id}">Delete</a>
+                    <a href="/upd/${library.id}">Update</a>
+                    <a href="/pages/upd-lib-old.jsp?id=${library.id}&name=${library.name}&address=${library.address}">Update-Old</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
+    <div>
+        <form action="/add" method="post">
+            <input name="name" placeholder="Name" required><br>
+            <input name="address" placeholder="Address" required><br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
 </body>
 </html>

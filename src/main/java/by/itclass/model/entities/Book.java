@@ -1,19 +1,25 @@
 package by.itclass.model.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
-    private String author;
-    private int pages;
+    @NonNull private String title;
+    @NonNull private String author;
+    @NonNull private int pages;
     @ManyToOne
-    private Library library;
+    @NonNull private Library library;
+
+    public Book(@NonNull Library library) {
+        this.library = library;
+    }
 }
